@@ -9,7 +9,6 @@
 .videoChat{
     display: flex;
     flex-direction: row;
-    margin: auto;
     justify-content: center;
 }
 
@@ -27,6 +26,24 @@
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin: 5px;
+}
+
+.sub{
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #fff;
+    background-color: #9544FF;
+    color: white;
+    border: 5px;
+    border-radius: 15px;
+    margin-left: 190px; 
+    margin-bottom: 5px;
+    margin-top: -120px;
 }
 
 a:link{
