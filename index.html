@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta Keywords="Lilcrash15, twitch, twitchtv, TTV, Lilcrash15, Preston Stone, 50 Noob kill, Badlands RP, Runescape,Ryan">
-    <meta name="google-site-verification" content="GrkzsahAx8-iX_mn_RtwEc114ooy6FxPiP6vd5nqjcQ" />
     <meta Description="A website focused around the twitch streamer known as Lilcrash15">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="MyWebsiteJS.js" type="text/javascript"></script>
     <!---End of Meta Data Stuff-->
     <!---Link for css-->
@@ -20,14 +16,9 @@
         <a href='https://www.privateinternetaccess.com/pages/buy-vpn/lilcrash' title='Buy VPN'>
             <img alt='Buy VPN' src='https://www.privateinternetaccess.com/affiliates/banners/728x90.png'>
         </a>  
-        <!---Login with google-->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>     
-        <meta name="google-signin-client_id" content="928158837222-b173cl0087akidin3udku9gb75pa5cb7.apps.googleusercontent.com"> 
 </head>
 
 <body class="body">
-    <!---Google Signin button-->
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
     <p><h1><a href="https://lilcrash15.github.io/LilcrashLive/">Lilcrash15 Live!</a></h1></p>
 <nav>
     <strong><input type="button" value="Home" class="button" onclick="window.location.href='https://lilcrash15.github.io/LilcrashLive/'"></strong>
@@ -44,24 +35,6 @@
     <div class="sub">
         <a href="https://www.twitch.tv/lilcrash15/subscribe" target="_blank" style="color: white;">Subscribe!</a>
     </div>
-
-    <!---google stuff-->
-    <script>
-        function onSignIn(googleUser) {
-          // Useful data for your client-side scripts:
-          var profile = googleUser.getBasicProfile();
-          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail());
-  
-          // The ID token you need to pass to your backend:
-          var id_token = googleUser.getAuthResponse().id_token;
-          console.log("ID Token: " + id_token);
-        }
-      </script>
     </body>
 <!---Footer-->
 <footer>
