@@ -46,6 +46,23 @@
     margin-top: -120px;
 }
 
+.facebook{
+    text-align: left;
+}
+
+.twitter{
+    text-align: left;
+    margin-top: 2px;
+}
+
+.timeline{
+    margin-left: 470px;
+    margin-top: 50px;
+    text-align: left ;
+    width: 50%;
+    height: auto;
+}
+
 a:link{
     color: red;
 }
