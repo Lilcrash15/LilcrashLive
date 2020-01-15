@@ -26,6 +26,13 @@
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin: 5px;
+
+}
+
+.fixed{
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
 }
 
 .sub{
