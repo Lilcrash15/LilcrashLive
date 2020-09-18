@@ -53,17 +53,35 @@
     <input type="button" value="About Me" class="Button" onclick="window.location.href='AboutMe.html'">
 </nav>
     <p><h2 style="color: black;">Here you can find all of Lilcrash15' Live broadcast!</h2></p>
-    <div class="videoChat">
-        <iframe src="https://player.twitch.tv/?channel=lilcrash15" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620" style="border:1px red"></iframe>
-        <iframe src="https://www.twitch.tv/embed/lilcrash15/chat" frameborder="0" scrolling="no" height="500" width="350"></iframe>
-    </div>
-    <div class="sub">
-        <a href="https://www.twitch.tv/lilcrash15/subscribe" target="_blank" style="color: white;">Subscribe!</a>
-    </div>
-    </body>
+<!-- Add a placeholder for the Twitch embed -->
+<div id="twitch-embed"></div>
+
+<!-- Load the Twitch embed script -->
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+<!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+
+<script type="text/javascript">
+    new Twitch.Embed("twitch-embed", {
+      width: 1280,
+      height: 720,
+      channel: "Lilcrash15",
+      // only needed if your site is also embedded on embed.example.com and othersite.example.com 
+      parent: []
+    });
+  </script>
+
+<!--End of video embed-->
+
+<!--Sub Button-->
+<div class="sub">
+    <a href="https://www.twitch.tv/lilcrash15/subscribe" target="_blank" style="color: white;">Subscribe!</a>
+</div>
+<!--End of Sub Button-->
+
+</body>
 <!---Footer-->
 <footer>
     <p><copyright>&copy;Lilcrash15<br>2019</copyright></p>
 </footer>
-</div>
 </html>

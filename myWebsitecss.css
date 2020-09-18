@@ -38,7 +38,7 @@
 .sub{
     display: inline-block;
     padding: 5px 5px;
-    font-size: 14px;
+    font-size: 19px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
@@ -48,9 +48,9 @@
     color: white;
     border: 5px;
     border-radius: 15px;
-    margin-left: 190px; 
+    margin-left: 62%; 
     margin-bottom: 5px;
-    margin-top: -120px;
+
 }
 
 .facebook{
