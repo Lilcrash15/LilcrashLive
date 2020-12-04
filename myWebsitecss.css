@@ -87,6 +87,28 @@
     text-align: center;
 }
 
+.container{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    font-size: 800%;
+    margin-top: 10%;
+}
+
+.topleft{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
 a:link{
     color: red;
 }
