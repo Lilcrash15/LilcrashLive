@@ -13,3 +13,7 @@ function copyText(){
     /* Alert the copied text */
     alert("Copied the text: " + copyText.value);
 }
+
+function redirect(){
+    alert("You will be redirected to Twitch.tv to complete your purchase.")    
+}
