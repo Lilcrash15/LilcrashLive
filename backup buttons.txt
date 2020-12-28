@@ -1,5 +1,0 @@
-    <input type="button" value="Home" onclick="MyWebite.html">
-    <a href="https://www.twitch.tv/lilcrash15/clips?filter=clips&range=7d"><input type="button" value="Twitch Clips"></a>
-    <input type="button" value="Twitter">
-    <input type="button" value="YouTube">
-    <input type="button" value="Discord">
