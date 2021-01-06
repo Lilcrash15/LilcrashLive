@@ -183,7 +183,6 @@ body{
 
 /* Navbar container */
 .navbar {
-    overflow: hidden;
     font-family: Arial;
     font-weight: 150%;
     color: black;
