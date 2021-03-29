@@ -1,6 +1,3 @@
-body{
-}
-
 .body{
     text-align: center;
     background: #404040;
@@ -82,6 +79,21 @@ body{
     top: 0;
 }
 
+.buttons{
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #fff;
+    color: white;
+    margin-top: 5px;
+    margin-left: 47%;
+
+}
+
 .sub{
     display: inline-block;
     padding: 5px 5px;
@@ -95,9 +107,38 @@ body{
     color: white;
     border: 5px;
     border-radius: 15px;
-    margin-top: 5px;
-    margin-left: 63%; 
-    margin-bottom: 5px;
+
+}
+
+.tip{
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #fff;
+    background-color: #9544FF;
+    color: white;
+    border: 5px;
+    border-radius: 15px;
+
+}
+
+.food{
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 19px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: #fff;
+    background-color: #9544FF;
+    color: white;
+    border: 5px;
+    border-radius: 15px;
 
 }
 
@@ -213,7 +254,7 @@ body{
   }
   
   /* Add a red background color to navbar links on hover */
-  .navbar a:hover, .dropdown:hover .dropbtn {
+  /*.navbar a:hover, .dropdown:hover .dropbtn {
   }
   
   /* Dropdown content (hidden by default) */
