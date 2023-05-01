@@ -1,8 +1,6 @@
 .body{
     text-align: center;
-    background: #404040;
-    color: white;
-    background-image: url(Dell-XPS-LOGO.png);
+    background: linear-gradient(135deg, #363636 0%, #1d1d1d 100%);
 }
 .minecraftBody{
     text-align: center;
