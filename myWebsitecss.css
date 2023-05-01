@@ -11,12 +11,25 @@
     overflow: hidden;
 }
 
-.logo{
-    width: 500px;
-    margin-top: -5%;
-    margin-bottom: -10%;
-    border-radius: 5px;
-}
+.logo-container {
+    width: 70%;
+    height: auto;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container img {
+    width: 125px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: linear-gradient(to bottom, #1a1a1a, #2f2f2f);
+    padding: 5px;
+    box-sizing: border-box;
+  }
 
 .videoChat{
     display: flex;
@@ -259,7 +272,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: transparent;
     opacity: 85%;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
