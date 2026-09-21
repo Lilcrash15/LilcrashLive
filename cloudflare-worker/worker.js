@@ -17,7 +17,13 @@
 //   DISCORD_CLIENT_SECRET
 //
 // Required var (wrangler.toml [vars], or the dashboard):
-//   ALLOWED_RETURN_ORIGIN — your site's origin, e.g. "https://lilcrash15.club"
+//   ALLOWED_RETURN_ORIGIN — your site's origin ONLY (scheme + host, no path,
+//   no trailing slash), e.g. "https://lilcrash15.club" or
+//   "https://lilcrash15.github.io" — NOT the full page URL. The site's own
+//   pages can live at any path under that origin (e.g. a GitHub Pages
+//   project site under /LilcrashLive/) — the browser sends us the exact
+//   auth-callback.html URL to return to, and we just check that its origin
+//   matches this allowlist before trusting it.
 //
 // Discord app setup (discord.com/developers/applications → your app → OAuth2):
 //   Add a redirect: https://<your-worker-subdomain>.workers.dev/callback
@@ -28,9 +34,15 @@ export default {
 
     if (url.pathname === "/login") {
       const state = url.searchParams.get("state") || "";
-      const returnOrigin = url.searchParams.get("return_origin") || "";
+      const returnUrlRaw = url.searchParams.get("return_url") || "";
 
-      if (returnOrigin !== env.ALLOWED_RETURN_ORIGIN) {
+      let returnUrl;
+      try {
+        returnUrl = new URL(returnUrlRaw);
+      } catch (e) {
+        return new Response("Bad return_url", { status: 400 });
+      }
+      if (returnUrl.origin !== env.ALLOWED_RETURN_ORIGIN) {
         return new Response("Origin not allowed", { status: 400 });
       }
 
@@ -40,8 +52,10 @@ export default {
       authorizeUrl.searchParams.set("redirect_uri", redirectUri);
       authorizeUrl.searchParams.set("response_type", "code");
       authorizeUrl.searchParams.set("scope", "identify");
-      // Carry the return origin through Discord's redirect alongside our CSRF state.
-      authorizeUrl.searchParams.set("state", `${state}.${btoa(returnOrigin)}`);
+      // Carry the full return URL (path and all) through Discord's redirect
+      // alongside our CSRF state. Base64 has no "." in its alphabet, so
+      // splitting on the first "." on the way back is always unambiguous.
+      authorizeUrl.searchParams.set("state", `${state}.${btoa(returnUrlRaw)}`);
 
       return Response.redirect(authorizeUrl.toString(), 302);
     }
@@ -51,22 +65,27 @@ export default {
       const rawState = url.searchParams.get("state") || "";
       const dotIndex = rawState.indexOf(".");
       const state = dotIndex === -1 ? rawState : rawState.slice(0, dotIndex);
-      const encodedOrigin = dotIndex === -1 ? "" : rawState.slice(dotIndex + 1);
+      const encodedReturnUrl = dotIndex === -1 ? "" : rawState.slice(dotIndex + 1);
 
-      let returnOrigin;
+      let returnUrl;
       try {
-        returnOrigin = atob(encodedOrigin);
+        returnUrl = new URL(atob(encodedReturnUrl));
       } catch (e) {
         return new Response("Bad state", { status: 400 });
       }
-      if (returnOrigin !== env.ALLOWED_RETURN_ORIGIN) {
+      if (returnUrl.origin !== env.ALLOWED_RETURN_ORIGIN) {
         return new Response("Origin not allowed", { status: 400 });
       }
+
+      function bounceBack(extraParams) {
+        const dest = new URL(returnUrl.toString());
+        dest.search = ""; // auth-callback.html shouldn't carry its own query string forward
+        Object.entries(extraParams).forEach(([k, v]) => dest.searchParams.set(k, v));
+        return Response.redirect(dest.toString(), 302);
+      }
+
       if (!code) {
-        return Response.redirect(
-          `${returnOrigin}/auth-callback.html?provider=discord&state=${encodeURIComponent(state)}`,
-          302
-        );
+        return bounceBack({ provider: "discord", state });
       }
 
       const redirectUri = `${url.origin}/callback`;
@@ -83,10 +102,7 @@ export default {
       });
 
       if (!tokenResp.ok) {
-        return Response.redirect(
-          `${returnOrigin}/auth-callback.html?provider=discord&state=${encodeURIComponent(state)}`,
-          302
-        );
+        return bounceBack({ provider: "discord", state });
       }
 
       const tokenData = await tokenResp.json();
@@ -99,13 +115,12 @@ export default {
         ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
         : `https://cdn.discordapp.com/embed/avatars/${Number(user.discriminator || 0) % 5}.png`;
 
-      const dest = new URL(`${returnOrigin}/auth-callback.html`);
-      dest.searchParams.set("provider", "discord");
-      dest.searchParams.set("username", user.username || "Discord user");
-      dest.searchParams.set("avatar", avatar);
-      dest.searchParams.set("state", state);
-
-      return Response.redirect(dest.toString(), 302);
+      return bounceBack({
+        provider: "discord",
+        username: user.username || "Discord user",
+        avatar: avatar,
+        state: state
+      });
     }
 
     return new Response("Not found", { status: 404 });

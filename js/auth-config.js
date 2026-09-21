@@ -6,8 +6,9 @@
 
 window.LILCRASH_AUTH_CONFIG = {
   // Twitch Developer Console (dev.twitch.tv/console/apps) → your app's Client ID.
-  // OAuth Redirect URL registered there must be:
-  //   https://<your-domain>/auth-callback.html
+  // OAuth Redirect URL registered there must be wherever auth-callback.html
+  // actually loads, subfolder included, e.g.:
+  //   https://lilcrash15.github.io/LilcrashLive/auth-callback.html
   twitchClientId: "",
 
   // Your deployed Cloudflare Worker's base URL (no trailing slash), e.g.

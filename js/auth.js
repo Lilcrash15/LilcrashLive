@@ -75,10 +75,16 @@
     sessionStorage.setItem(STATE_KEY, state);
     sessionStorage.setItem(RETURN_KEY, window.location.pathname);
 
+    // The full URL of this site's callback page, wherever it actually lives
+    // (root domain, or a subfolder like a GitHub Pages project site) — the
+    // Worker uses this exact URL to send the browser back, it only checks
+    // that the origin matches what it's configured to trust.
+    var callbackUrl = new URL("auth-callback.html", window.location.href).toString();
+
     var url =
       CONFIG.discordAuthWorkerUrl.replace(/\/$/, "") + "/login" +
       "?state=" + encodeURIComponent(state) +
-      "&return_origin=" + encodeURIComponent(window.location.origin);
+      "&return_url=" + encodeURIComponent(callbackUrl);
 
     window.location.href = url;
   }
