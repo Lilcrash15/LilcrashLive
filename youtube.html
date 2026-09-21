@@ -1,78 +1,78 @@
-<html>
-    <head>
-<!---Random Meta Data stuff-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta Keywords="Lilcrash15, twitch, twitchtv, TTV, Lilcrash15, Preston Stone, 50 Noob kill, Badlands RP, Runescape,Ryan">
-    <meta Description="A website focused around the twitch streamer known as Lilcrash15">
-    <script src="MyWebsiteJS.js" type="text/javascript"></script>
-<!---End of Meta Data Stuff-->
-<!--Links and stuff-->
-    <link rel="stylesheet" type="text/css" href="myWebsitecss.css">
-    <link rel="stylesheet" type="text/css" href="clipsxml.xml">
-
-        <div class="facebook">
-                <!-- Load Facebook SDK for JavaScript -->
-                <div id="fb-roots"></div>
-                <script>(function(d, s, id) {
-                  var js, fjs = d.getElementsByTagName(s)[0];
-                  if (d.getElementById(id)) return;
-                  js = d.createElement(s); js.id = id;
-                  js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                  fjs.parentNode.insertBefore(js, fjs);
-                }(document, 'script', 'facebook-jssdk'));</script>
-              
-                <!-- Your share button code -->
-                <div class="fb-share-button"
-                  data-href="https://lilcrash15.github.io/LilcrashLive/"
-                  data-layout="button_count">
-                </div>
-            </div>
-                <!---Twitter-->
-            <div class="twitter">
-                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="Hi! Checkout Lilcrash Live! Here You Can Watch @TheLilcrash15 Live on @Twitch &amp; Much More!" data-via="TheLilcrash15" data-hashtags="LilcrashLive" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-            <body class="body">
-    </head>
-
-<!--Start of body-->
-<body class="body">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube — Lilcrash15</title>
+  <meta name="description" content="Watch Lilcrash15's latest YouTube uploads and subscribe to the channel.">
+  <meta name="keywords" content="Lilcrash15, twitch, twitchtv, TTV, Preston Stone, Badlands RP, Runescape, Ryan">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js" defer></script>
 </head>
-<body class="body" style="overflow: hidden;">
-    <div class="navbar">
-        <br>
-    <div class="dropDown">
-    <button class="logo-container">
-    <p style="color: black;"><strong class=""
-        ><img class="logo" src="logo.png" alt="Logo"></strong></p>
-    </button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="clips.html">Clips</a>
-                <a href="youtube.html">YouTube</a>
-                <a href="discord.html">Discord</a>
-                <a href="Minecraft.html">Minecraft</a>
-                <a href="twitter.html">Twitter</a>
-                <a href="game.html">Game</a>
-                
-            </div>
-        </div>
-    </div>
-<br>
-<br>
-<br>
-<div style="color: white; font-weight: bold;">
-<p><h1>Here you can find my most recent upload to my YouTube channel. <br> If you follow the link you can see all my videos! Click the button below to subscribe!</h1></p>
-<iframe src="https://www.youtube.com/embed/?listType=user_uploads&list=TheLilcrash15" width="480" height="400" style="margin-bottom: 20px;"></iframe>
-</div>
-<!--Sub button-->
-<script src="https://apis.google.com/js/platform.js"></script>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="g-ytsubscribe" data-channel="Thelilcrash15" data-layout="default" data-theme="dark" data-count="default"></div>
-<!--End of sub button-->
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="images/logo.png" alt="">
+        Lilcrash15
+      </a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clips.html">Clips</a></li>
+          <li><a href="youtube.html" aria-current="page">YouTube</a></li>
+          <li><a href="discord.html">Discord</a></li>
+          <li><a href="Minecraft.html">Minecraft</a></li>
+          <li><a href="twitter.html">Twitter</a></li>
+          <li><a href="game.html">Game</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="page-header">
+      <h1>YouTube</h1>
+      <p>The most recent upload from the channel — follow the link below to see everything, and subscribe to keep up with new videos.</p>
+    </div>
+
+    <div class="widget-stack">
+      <!--
+        NOTE (from the rebuild): the original embed used a "user_uploads" playlist
+        parameter that YouTube's embed player has since deprecated. Swapping to a
+        direct channel link keeps this working; if you'd rather auto-play the
+        latest video, that needs the actual channel/video ID.
+      -->
+      <a class="btn btn-primary" href="https://www.youtube.com/TheLilcrash15" target="_blank" rel="noopener">
+        Visit the YouTube channel
+      </a>
+
+      <div class="game-frame-wrap" style="max-width:480px;">
+        <div class="embed-frame ratio-16-9">
+          <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=TheLilcrash15" allowfullscreen title="Lilcrash15 YouTube uploads"></iframe>
+        </div>
+      </div>
+
+      <script src="https://apis.google.com/js/platform.js"></script>
+      <div class="g-ytsubscribe" data-channel="Thelilcrash15" data-layout="default" data-theme="dark" data-count="default"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-links">
+        <a href="https://twitter.com/TheLilcrash15" target="_blank" rel="noopener">Twitter</a>
+      </div>
+      <div class="footer-meta">&copy; Lilcrash15</div>
+    </div>
+  </footer>
 </body>
-<footer class="">
-    <p><copyright>&copy;Lilcrash15<br>2019</copyright></p>
-</footer>
 </html>
