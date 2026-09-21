@@ -8,6 +8,8 @@
   <meta name="keywords" content="Lilcrash15, twitch, twitchtv, TTV, Preston Stone, Badlands RP, Runescape, Ryan">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth-config.js"></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/site.js" defer></script>
 </head>
 <body>
@@ -19,22 +21,23 @@
         <img class="brand-logo" src="images/logo.png" alt="">
         Lilcrash15
       </a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-      <nav class="site-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="clips.html" aria-current="page">Clips</a></li>
-          <li><a href="youtube.html">YouTube</a></li>
-          <li><a href="discord.html">Discord</a></li>
-          <li><a href="Minecraft.html">Minecraft</a></li>
-          <li><a href="twitter.html">Twitter</a></li>
-          <li><a href="game.html">Game</a></li>
-        </ul>
-      </nav>
+      <div class="nav-right">
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="clips.html" aria-current="page">Clips</a></li>
+            <li><a href="youtube.html">YouTube</a></li>
+            <li><a href="discord.html">Discord</a></li>
+            <li><a href="Minecraft.html">Minecraft</a></li>
+          </ul>
+        </nav>
+        <div class="account-widget" aria-live="polite"></div>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -51,76 +54,82 @@
       NOTE (from the rebuild): these are the same VOD/clip IDs from the old site.
       Twitch expires non-highlighted VODs after a period of time, so some of the
       embeds below may no longer resolve — worth a manual pass to swap in fresh clips.
+
+      Each iframe lists every domain=&parent= value Twitch will allow it to load
+      from (lilcrash15.club, lilcrash15.github.io, localhost, 127.0.0.1). Twitch
+      refuses to render the player from ANY domain not listed here — if this site
+      ever moves to a different domain, add it to all 14 iframes below or the
+      clips will show a blocked-embed error again.
     -->
     <div class="clip-grid">
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=888849412&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 888849412"></iframe>
+          <iframe src="https://player.twitch.tv/?video=888849412&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 888849412"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=888849345&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 888849345"></iframe>
+          <iframe src="https://player.twitch.tv/?video=888849345&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 888849345"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=869974847&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 869974847"></iframe>
+          <iframe src="https://player.twitch.tv/?video=869974847&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 869974847"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=869971139&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 869971139"></iframe>
+          <iframe src="https://player.twitch.tv/?video=869971139&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 869971139"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=855182056&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 855182056"></iframe>
+          <iframe src="https://player.twitch.tv/?video=855182056&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 855182056"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=855181963&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 855181963"></iframe>
+          <iframe src="https://player.twitch.tv/?video=855181963&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 855181963"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=855424998&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 855424998"></iframe>
+          <iframe src="https://player.twitch.tv/?video=855424998&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 855424998"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://player.twitch.tv/?video=840470105&parent=lilcrash15.club" allowfullscreen title="Twitch VOD 840470105"></iframe>
+          <iframe src="https://player.twitch.tv/?video=840470105&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Twitch VOD 840470105"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=PlausiblePoorPenguinPogChamp&parent=lilcrash15.club" allowfullscreen title="Clip: PlausiblePoorPenguinPogChamp"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=PlausiblePoorPenguinPogChamp&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: PlausiblePoorPenguinPogChamp"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=LivelyHealthyToadDBstyle&parent=lilcrash15.club" allowfullscreen title="Clip: LivelyHealthyToadDBstyle"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=LivelyHealthyToadDBstyle&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: LivelyHealthyToadDBstyle"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=PoisedWiseVanillaHotPokket&parent=lilcrash15.club" allowfullscreen title="Clip: PoisedWiseVanillaHotPokket"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=PoisedWiseVanillaHotPokket&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: PoisedWiseVanillaHotPokket"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=LachrymoseCourageousAntelopeRuleFive&parent=lilcrash15.club" allowfullscreen title="Clip: LachrymoseCourageousAntelopeRuleFive"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=LachrymoseCourageousAntelopeRuleFive&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: LachrymoseCourageousAntelopeRuleFive"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=PlausibleDelightfulOpossumBudBlast&parent=lilcrash15.club" allowfullscreen title="Clip: PlausibleDelightfulOpossumBudBlast"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=PlausibleDelightfulOpossumBudBlast&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: PlausibleDelightfulOpossumBudBlast"></iframe>
         </div>
       </div>
       <div class="clip-card">
         <div class="embed-frame ratio-16-9">
-          <iframe src="https://clips.twitch.tv/embed?clip=AdorableApatheticSnoodAsianGlow&parent=lilcrash15.club" allowfullscreen title="Clip: AdorableApatheticSnoodAsianGlow"></iframe>
+          <iframe src="https://clips.twitch.tv/embed?clip=AdorableApatheticSnoodAsianGlow&parent=lilcrash15.club&parent=lilcrash15.github.io&parent=localhost&parent=127.0.0.1" allowfullscreen title="Clip: AdorableApatheticSnoodAsianGlow"></iframe>
         </div>
       </div>
     </div>
@@ -128,9 +137,6 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-links">
-        <a href="https://twitter.com/TheLilcrash15" target="_blank" rel="noopener">Twitter</a>
-      </div>
       <div class="footer-meta">&copy; Lilcrash15</div>
     </div>
   </footer>

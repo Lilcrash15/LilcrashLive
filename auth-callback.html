@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signing you in… — Lilcrash15</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth-config.js"></script>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <main class="page" style="text-align:center; padding-top: 4rem;">
+    <p id="auth-status">Signing you in…</p>
+  </main>
+
+  <script>
+    (function () {
+      var statusEl = document.getElementById("auth-status");
+
+      function fail(message) {
+        statusEl.textContent = message + " Redirecting you back…";
+        setTimeout(function () {
+          window.location.href = LilcrashAuth.consumeReturnPath();
+        }, 1500);
+      }
+
+      // --- Twitch (implicit grant) lands here with an access token in the URL fragment ---
+      var hash = window.location.hash.indexOf("#") === 0 ? window.location.hash.slice(1) : "";
+      var hashParams = new URLSearchParams(hash);
+      var accessToken = hashParams.get("access_token");
+      var hashState = hashParams.get("state");
+
+      // --- Discord (relayed through the Cloudflare Worker) lands here with query params ---
+      var queryParams = new URLSearchParams(window.location.search);
+      var discordProvider = queryParams.get("provider");
+      var queryState = queryParams.get("state");
+
+      if (accessToken) {
+        var expected = LilcrashAuth.consumeState();
+        if (!expected || hashState !== expected) {
+          fail("Could not verify the login request.");
+          return;
+        }
+
+        var clientId = (window.LILCRASH_AUTH_CONFIG || {}).twitchClientId || "";
+
+        fetch("https://id.twitch.tv/oauth2/validate", {
+          headers: { Authorization: "OAuth " + accessToken }
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data || !data.login) throw new Error("validate failed");
+
+            var expiresAt = Date.now() + (parseInt(data.expires_in, 10) || 3600) * 1000;
+
+            // Best-effort avatar lookup — identity still works even if this fails.
+            return fetch("https://api.twitch.tv/helix/users?login=" + encodeURIComponent(data.login), {
+              headers: {
+                Authorization: "Bearer " + accessToken,
+                "Client-Id": clientId
+              }
+            })
+              .then(function (r) { return r.json(); })
+              .then(function (helix) {
+                var avatar = helix && helix.data && helix.data[0] ? helix.data[0].profile_image_url : "";
+                LilcrashAuth.saveSession({
+                  provider: "twitch",
+                  username: data.login,
+                  avatar: avatar,
+                  expiresAt: expiresAt
+                });
+              })
+              .catch(function () {
+                LilcrashAuth.saveSession({
+                  provider: "twitch",
+                  username: data.login,
+                  avatar: "",
+                  expiresAt: expiresAt
+                });
+              });
+          })
+          .then(function () {
+            window.location.href = LilcrashAuth.consumeReturnPath();
+          })
+          .catch(function () {
+            fail("Twitch login failed.");
+          });
+      } else if (discordProvider === "discord") {
+        var expectedD = LilcrashAuth.consumeState();
+        var username = queryParams.get("username");
+        var avatar = queryParams.get("avatar");
+
+        if (!expectedD || queryState !== expectedD || !username) {
+          fail("Discord login failed.");
+          return;
+        }
+
+        LilcrashAuth.saveSession({
+          provider: "discord",
+          username: username,
+          avatar: avatar || "",
+          expiresAt: Date.now() + 6 * 60 * 60 * 1000 // 6-hour decorative session
+        });
+        window.location.href = LilcrashAuth.consumeReturnPath();
+      } else {
+        fail("No login information found.");
+      }
+    })();
+  </script>
+</body>
+</html>

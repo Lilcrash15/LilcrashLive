@@ -8,6 +8,8 @@
   <meta name="keywords" content="Lilcrash15, twitch, twitchtv, TTV, Preston Stone, Badlands RP, Runescape, Ryan, Minecraft">
   <link rel="icon" href="images/logo.png" type="image/png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth-config.js"></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/site.js" defer></script>
 </head>
 <body>
@@ -19,22 +21,23 @@
         <img class="brand-logo" src="images/logo.png" alt="">
         Lilcrash15
       </a>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 6h18M3 12h18M3 18h18"/>
-        </svg>
-      </button>
-      <nav class="site-nav" aria-label="Primary">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="clips.html">Clips</a></li>
-          <li><a href="youtube.html">YouTube</a></li>
-          <li><a href="discord.html">Discord</a></li>
-          <li><a href="Minecraft.html" aria-current="page">Minecraft</a></li>
-          <li><a href="twitter.html">Twitter</a></li>
-          <li><a href="game.html">Game</a></li>
-        </ul>
-      </nav>
+      <div class="nav-right">
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="clips.html">Clips</a></li>
+            <li><a href="youtube.html">YouTube</a></li>
+            <li><a href="discord.html">Discord</a></li>
+            <li><a href="Minecraft.html" aria-current="page">Minecraft</a></li>
+          </ul>
+        </nav>
+        <div class="account-widget" aria-live="polite"></div>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -59,9 +62,6 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-links">
-        <a href="https://twitter.com/TheLilcrash15" target="_blank" rel="noopener">Twitter</a>
-      </div>
       <div class="footer-meta">&copy; Lilcrash15</div>
     </div>
   </footer>

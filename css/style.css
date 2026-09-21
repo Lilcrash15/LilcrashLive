@@ -133,6 +133,12 @@ p {
   border: 2px solid var(--accent-live);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .nav-toggle {
   display: none;
   background: none;
@@ -216,6 +222,86 @@ p {
 
   .site-nav a[aria-current="page"] {
     border-bottom-color: var(--border-soft);
+  }
+}
+
+/* =========================================================
+   Account widget (Twitch / Discord sign-in)
+   ========================================================= */
+
+.account-widget {
+  display: flex;
+  align-items: center;
+}
+
+.account-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-mini {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.btn-mini-twitch:hover,
+.btn-mini-twitch:focus-visible {
+  border-color: #9146ff;
+  background: rgba(145, 70, 255, 0.12);
+}
+
+.btn-mini-discord:hover,
+.btn-mini-discord:focus-visible {
+  border-color: #5865f2;
+  background: rgba(88, 101, 242, 0.12);
+}
+
+.account-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.account-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  display: block;
+}
+
+.account-name {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.account-logout {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.account-logout:hover {
+  color: var(--text-primary);
+}
+
+@media (max-width: 720px) {
+  .account-name {
+    display: none;
   }
 }
 
@@ -429,16 +515,6 @@ p {
   max-width: 420px;
 }
 
-.game-frame-wrap {
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.game-frame-wrap .embed-frame {
-  aspect-ratio: 1 / 1;
-}
-
 /* =========================================================
    Footer
    ========================================================= */
@@ -477,6 +553,7 @@ p {
 .footer-meta {
   color: var(--text-muted);
   font-size: 0.85rem;
+  margin-left: auto;
 }
 
 .footer-counter {

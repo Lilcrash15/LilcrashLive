@@ -1,0 +1,12 @@
+name = "lilcrash-discord-auth"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# Your site's origin exactly as visitors load it — no trailing slash.
+ALLOWED_RETURN_ORIGIN = "https://lilcrash15.club"
+
+# DISCORD_CLIENT_ID and DISCORD_CLIENT_SECRET are secrets, not vars —
+# set them with:
+#   wrangler secret put DISCORD_CLIENT_ID
+#   wrangler secret put DISCORD_CLIENT_SECRET
