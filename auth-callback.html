@@ -53,7 +53,11 @@
           .then(function (data) {
             if (!data || !data.login) throw new Error("validate failed");
 
-            var expiresAt = Date.now() + (parseInt(data.expires_in, 10) || 3600) * 1000;
+            // How long the *site* remembers you signed in — independent of the
+            // underlying Twitch token's real lifetime, since we only use that
+            // token once, right here, to look up the username/avatar and then
+            // never touch it again. 30 days is just a "remember me" duration.
+            var expiresAt = Date.now() + 30 * 24 * 60 * 60 * 1000;
 
             // Best-effort avatar lookup — identity still works even if this fails.
             return fetch("https://api.twitch.tv/helix/users?login=" + encodeURIComponent(data.login), {
@@ -101,7 +105,7 @@
           provider: "discord",
           username: username,
           avatar: avatar || "",
-          expiresAt: Date.now() + 6 * 60 * 60 * 1000 // 6-hour decorative session
+          expiresAt: Date.now() + 30 * 24 * 60 * 60 * 1000 // 30-day "remember me"
         });
         window.location.href = LilcrashAuth.consumeReturnPath();
       } else {
