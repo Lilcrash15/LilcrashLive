@@ -9,10 +9,10 @@ window.LILCRASH_AUTH_CONFIG = {
   // OAuth Redirect URL registered there must be wherever auth-callback.html
   // actually loads, subfolder included, e.g.:
   //   https://lilcrash15.github.io/LilcrashLive/auth-callback.html
+  // Not set up yet — Twitch login will show a friendly "not configured" alert
+  // until you register an app and fill this in.
   twitchClientId: "",
 
-  // Your deployed Cloudflare Worker's base URL (no trailing slash), e.g.
-  //   https://lilcrash-discord-auth.yoursubdomain.workers.dev
-  // See cloudflare-worker/README.md for setup.
-  discordAuthWorkerUrl: ""
+  // Discord login's Cloudflare Worker — live.
+  discordAuthWorkerUrl: "https://lilcrash-discord-auth.lilcrash19.workers.dev"
 };
