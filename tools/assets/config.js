@@ -23,6 +23,7 @@ window.LC_TOOLS_CONFIG = {
   tools: [
     {
       id: "lcclips",
+      page: "lcclips.html",           // the tool's own page (for search engines)
       name: "LCClips",
       repo: "LCClips",
       status: "available",          // "available" | "bundled" | "coming-soon"
@@ -46,6 +47,7 @@ window.LC_TOOLS_CONFIG = {
     },
     {
       id: "lcbot",
+      page: "lcbot.html",           // the tool's own page (for search engines)
       name: "LCBot",
       repo: "LCBot",
       status: "available",
@@ -67,6 +69,7 @@ window.LC_TOOLS_CONFIG = {
     },
     {
       id: "lcedit",
+      page: "lcedit.html",           // the tool's own page (for search engines)
       name: "LCEdit",
       repo: "LCClips",              // ships inside LCClips
       status: "bundled",

@@ -186,7 +186,7 @@
         el("span", { text: tool.name.replace(/^LC/, "").charAt(0) })
       ]),
       el("div", { class: "tool-title" }, [
-        el("h2", { text: tool.name }),
+        el("h2", null, [tool.page ? el("a", { href: tool.page, text: tool.name }) : tool.name]),
         el("span", { class: "tool-status status-" + tool.status, text: statusLabel })
       ])
     ]);
@@ -218,7 +218,9 @@
       dl.innerHTML = DOWNLOAD_ICON;
       dl.appendChild(el("span", { "data-download-label": tool.id, text: "Download " + tool.name }));
       actions.appendChild(dl);
-      actions.appendChild(el("a", { class: "btn btn-outline", href: repoUrl(tool.repo), target: "_blank", rel: "noopener", text: "View on GitHub" }));
+      actions.appendChild(tool.page
+        ? el("a", { class: "btn btn-outline", href: tool.page, text: "Learn more" })
+        : el("a", { class: "btn btn-outline", href: repoUrl(tool.repo), target: "_blank", rel: "noopener", text: "View on GitHub" }));
       actions.appendChild(el("p", { class: "tool-meta", "data-meta": tool.id }, [tool.platform]));
     } else if (tool.status === "bundled") {
       var parent = toolById(tool.bundledWith);
@@ -226,6 +228,7 @@
       link.innerHTML = DOWNLOAD_ICON;
       link.appendChild(el("span", { text: "Get it with " + parent.name }));
       actions.appendChild(link);
+      if (tool.page) actions.appendChild(el("a", { class: "btn btn-outline", href: tool.page, text: "Learn more" }));
       actions.appendChild(el("p", { class: "tool-meta" }, [tool.platform + ". Install LCClips and LCEdit is already there."]));
     } else {
       actions.appendChild(el("span", { class: "btn btn-outline is-disabled", "aria-disabled": "true", text: "Not released yet" }));
@@ -297,8 +300,11 @@
 
   function initToolsPage() {
     var grid = document.getElementById("tool-grid");
-    if (!grid) return;
-    CFG.tools.forEach(function (t) { grid.appendChild(buildCard(t)); });
+    if (grid) CFG.tools.forEach(function (t) { grid.appendChild(buildCard(t)); });
+
+    // Tool pages (lcbot.html etc.) have their own static markup with
+    // data-count / data-download hooks; only fetch when something needs it.
+    if (!document.querySelector("[data-count], [data-download], #total-downloads")) return;
 
     var cache = readCache();
     if (cache) applyData({ data: cache.data, at: cache.at, stale: false });

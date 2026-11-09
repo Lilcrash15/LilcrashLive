@@ -104,3 +104,33 @@ Don't add the `CNAME` file before DNS is set up. GitHub would start redirecting 
   turn on Pages, and add a DNS `CNAME tools → lilcrash15.github.io`.
 - **`lctools.dev`**: this is a different domain, not a subdomain of lilcrash.com. You'd have to buy it
   (`.dev` costs about $12–15 a year and forces HTTPS, which Pages handles). It could point at that same separate repo.
+
+## Getting found on Google
+
+Already done in the code:
+
+- **One page per tool** (`lcclips.html`, `lcbot.html`, `lcedit.html`), each with its own title, description and heading
+  aimed at searches people actually type: "free clipping software", "free Twitch chat bot", "AnkhBot alternative",
+  "instant replay", "clip cutter".
+- **Structured data** (JSON-LD `SoftwareApplication`) telling Google each page is a free Windows app.
+- **Canonical URLs, Open Graph tags** (link previews in Discord and X), `robots.txt` and `sitemap.xml`.
+
+All URLs use `https://lilcrash.com`. **Upload these pages after the domain is working**, or Google will be pointed at a
+domain that doesn't load yet.
+
+What you need to do (this matters more than any tag):
+
+1. **Google Search Console** (search.google.com/search-console): add `lilcrash.com` as a *Domain* property, verify it
+   with the DNS TXT record it gives you, then go to **Sitemaps** and submit `https://lilcrash.com/sitemap.xml`.
+   Use **URL Inspection → Request indexing** on the three tool pages.
+   (The old `googlea0cd6514ca35d862.html` file only verifies the github.io address.)
+2. **Link to the site from everywhere you control**: the LCClips and LCBot repo READMEs and their "Website" field
+   (repo → ⚙ next to About), your Twitch panels, YouTube descriptions and Discord. Add repo topics like
+   `twitch-bot`, `chatbot`, `clipping`, `instant-replay`, `screen-recorder`, `obs`.
+3. **Get listed elsewhere**: AlternativeTo (as an alternative to AnkhBot, Streamlabs Chatbot, Medal, ShadowPlay),
+   Reddit (r/Twitch, r/streaming, r/pcgaming), and OBS or streaming forums. Links from other sites are the biggest
+   ranking factor.
+4. **Be patient**: new domains usually take weeks to months to show up for broad terms like "streaming bot".
+   Specific searches ("AnkhBot alternative", "free self-hosted Twitch bot") come first.
+
+The meta `keywords` tag isn't used. Google has ignored it since 2009.
