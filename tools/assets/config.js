@@ -124,7 +124,7 @@ window.LC_TOOLS_CONFIG = {
     goals: [
       "Code-signing certificate, so Windows stops showing the SmartScreen warning on install",
       "Time to build and ship new LC tools",
-      "Keeping every LC tool free, with no ads and no accounts"
+      "Keeping every LC tool free and open source, with no ads, accounts or subscriptions"
     ]
   }
 };
