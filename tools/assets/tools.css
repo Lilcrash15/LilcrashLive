@@ -121,6 +121,11 @@
   transition: border-color 0.15s ease;
 }
 
+/* An odd card out on the last row spans the full width instead of leaving a gap. */
+.tool-card:last-of-type:nth-of-type(odd) {
+  grid-column: 1 / -1;
+}
+
 .tool-card:hover {
   border-color: #45454f;
 }

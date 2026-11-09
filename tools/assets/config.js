@@ -85,18 +85,6 @@ window.LC_TOOLS_CONFIG = {
         "Saved cuts appear in your LCClips library right away"
       ]
     },
-    {
-      id: "lcai",
-      name: "LCAI",
-      repo: null,                   // set to "LCAI" once the repo + a release exist
-      status: "coming-soon",
-      platform: "In development",
-      tagline: "The next app in the LC line.",
-      about:
-        "LCAI is in the works. It shares the same themes and look as LCBot and LCClips. " +
-        "Details and a download will show up here as soon as the first release is out.",
-      features: []
-    }
   ],
 
   // ---------------------------------------------------------------------
@@ -132,7 +120,7 @@ window.LC_TOOLS_CONFIG = {
     ],
     goals: [
       "Code-signing certificate, so Windows stops showing the SmartScreen warning on install",
-      "Time to finish LCAI and ship new LC tools",
+      "Time to build and ship new LC tools",
       "Keeping every LC tool free, with no ads and no accounts"
     ]
   }

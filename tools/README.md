@@ -23,10 +23,10 @@ The Tools and Support pages live in this folder, inside the LilcrashLive site:
 - Counts are GitHub's own numbers: every download of a release file, whether it came from this site, GitHub,
   or the apps' built-in updater.
 
-## Adding a tool / shipping LCAI
+## Adding a tool
 
-1. Create the repo (e.g. `Lilcrash15/LCAI`) and publish a release with the `.exe` attached.
-2. In `config.js`, set that tool's `repo: "LCAI"` and `status: "available"`, and add an `assetMatch` and a feature list.
+1. Create the repo (e.g. `Lilcrash15/LCNewTool`) and publish a release with the `.exe` attached.
+2. In `config.js`, add an entry to `tools: [...]` with `repo: "LCNewTool"`, `status: "available"`, an `assetMatch` and a feature list.
 
 That's it. For a brand-new tool, copy one of the entries in `tools: [...]`.
 

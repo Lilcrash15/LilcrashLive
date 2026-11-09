@@ -285,7 +285,9 @@
       if (!haveAny) {
         status.textContent = "Couldn't reach GitHub right now. Download links still work.";
       } else if (result.stale) {
-        status.textContent = "GitHub is rate-limiting this browser. Showing counts from " + (result.at ? timeAgo(result.at) : "earlier") + ".";
+        status.textContent = result.at
+          ? "GitHub is rate-limiting this browser. Showing counts from " + timeAgo(result.at) + "."
+          : "GitHub is rate-limiting this browser, so some counts may be missing. Download links still work.";
       } else {
         status.setAttribute("data-at", result.at);
         status.textContent = "Live from GitHub Releases · updated " + timeAgo(result.at);
