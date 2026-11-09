@@ -101,7 +101,7 @@ window.LC_TOOLS_CONFIG = {
       {
         id: "kofi",
         name: "Ko-fi",
-        url: "",                    // e.g. "https://ko-fi.com/lilcrash15"
+        url: "https://ko-fi.com/lilcrash15",
         recommended: true,
         blurb: "One-time or monthly. Ko-fi takes 0% of one-time donations; you only pay the PayPal or Stripe processing fee. Cards, PayPal, Apple Pay and Google Pay all work.",
         cta: "Support on Ko-fi"
