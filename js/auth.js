@@ -22,17 +22,20 @@
     }).join("");
   }
 
+  // The login itself lives in localStorage (survives closing the tab/browser)
+  // — only the short-lived CSRF state and return-path values below stay in
+  // sessionStorage, since those only need to survive a single redirect trip.
   function saveSession(session) {
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
   }
 
   function loadSession() {
-    var raw = sessionStorage.getItem(STORAGE_KEY);
+    var raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     try {
       var session = JSON.parse(raw);
       if (session.expiresAt && Date.now() > session.expiresAt) {
-        sessionStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(STORAGE_KEY);
         return null;
       }
       return session;
@@ -42,7 +45,7 @@
   }
 
   function clearSession() {
-    sessionStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
   }
 
   function startTwitchLogin() {
